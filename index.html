@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<head>
+  <meta charset='utf-8'>
+  <meta content='IE=Edge' http-equiv='X-UA-Compatible'>
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <title></title>
+  <link href='./public/styles/app.min.css' rel='stylesheet' type='text/css'>
+  <link href='./public/styles/bootstrap.min.css' rel='stylesheet' type='text/css'>
+  <link href='./public/styles/font-awesome.min.css' rel='stylesheet' type='text/css'>
+</head>
+<body class='container-fluid'>
+  <header class='row'>
+    <nav class='navbar navbar-default'>
+      <div class='navbar-header'>
+        <div class='navbar-brand'>LearnHub - One stop learning portal!</div>
+      </div>
+    </nav>
+  </header>
+  <section class='row' id='content-container'>
+    <div class='col-md-3' id='sidebar-col'>
+      <div class='container-fluid'>
+        <div class='row'>
+          <div class='container-fluid'>
+            <div class='row'>
+              <div class='panel panel-default'>
+                <div class='panel-heading'>
+                  <div class='panel-title'>Categories</div>
+                </div>
+                <div class='panel-body category-checks'>
+                  <form id='category-form'>
+                    <input type='checkbox' value='iOS'>iOS</input>
+                    <br>
+                    <input type='checkbox' value='Android'>Android</input>
+                    <br>
+                    <input type='checkbox' value='Web Development'>Web Development</input>
+                    <br>
+                    <input type='checkbox' value='Software Engineering'>Software Engineering</input>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='container-fluid'>
+            <div class='row'>
+              <div class='panel panel-default'>
+                <div class='panel-heading'>
+                  <div class='panel-title'>Sorting</div>
+                </div>
+                <div class='panel-body'>
+                  <div class='btn-group' role='group'>
+                    <button class='btn btn-default' id='sort-by-cost' type='button'>Cost</button>
+                    <button class='btn btn-default' id='sort-by-ratings' type='button'>Ratings</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='container-fluid'>
+            <div class='row'>
+              <div class='panel panel-default'>
+                <div class='panel-heading'>
+                  <div class='panel-title' id='course-count'>
+                    <span class='count'></span>
+                    Courses available
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='col-md-9' id='data-col'>
+      <div class='container-fluid'>
+        <div class='row'>
+          <div class='input-group col-md-5'>
+            <input class='form-control' id='searchCriterion' placeholder='Search for a course.' type='text'>
+            <span class='input-group-btn'>
+              <button class='btn btn-default' id='search' type='text'>Go!</button>
+            </span>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='container-fluid course-container'></div>
+          <!-- we are generating this section via JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class='row'>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='panel panel-default'>
+          <div class='panel-heading'>
+            <div class='panel-title'>A Coda Global Initiative</div>
+          </div>
+          <div class='panel-body'>links | links | links</div>
+          <div class='panel-footer'>copyright &copy; LearnHub 2016</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div id='scripts'>
+    <script src='./public/scripts/jquery-2.1.4.min.js'></script>
+    <script src='./public/scripts/ie10-viewport-bug-workaround.min.js'></script>
+    <script src='./public/scripts/app.min.js'></script>
+  </div>
+</body>
