@@ -21,19 +21,28 @@
         .row
           .container-fluid
             .row
-              category
-            .row
-              %ul
-                %li category one
-                %li category two
+              .panel.panel-default
+                .panel-heading
+                  .panel-title Categories
+                .panel-body.category-checks
+                  %input{'type'=>'checkbox'} iOS
+                  %br
+                  %input{'type'=>'checkbox'} Android
+                  %br
+                  %input{'type'=>'checkbox'} Web Development
+                  %br
+                  %input{'type'=>'checkbox'} Software Development
+                    
         .row
           .container-fluid
             .row
-              sort by
-            .row
-              price
-            .row
-              rating
+              .panel.panel-default
+                .panel-heading
+                  .panel-title Sorting
+                .panel-body 
+                  .btn-group{'role'=>'group'}
+                    %button.btn.btn-default{'type'=>'button'} Price
+                    %button.btn.btn-default{'type'=>'button'} Ratings
       
     #data-col.col-md-9
       .container-fluid
