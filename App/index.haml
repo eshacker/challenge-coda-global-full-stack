@@ -11,10 +11,12 @@
 
 %body.container-fluid
   %header.row
-    LearnHub - One stop learning portal!
+    %nav.navbar.navbar-default
+      .navbar-header
+        .navbar-brand LearnHub - One stop learning portal!
 
   %section.row
-    .col-md-3
+    #sidebar-col.col-md-3
       .container-fluid
         .row
           .container-fluid
@@ -33,10 +35,13 @@
             .row
               rating
       
-    .col-md-9
+    #data-col.col-md-9
       .container-fluid
         .row
-          search bar
+          .input-group.col-md-5
+            %input.form-control{'type'=>'text', :'placeholder'=>'Search for a course.' }/
+            %span.input-group-btn
+              %button.btn.btn-default{'type'=>'text'} Go!
         .row
           .container-fluid
             .row
@@ -65,7 +70,12 @@
                     price
               
   %footer.row
-    copyright &copy; LearnHub 2016
+    .jumbotron
+      .panel.panel-default
+        .panel-heading
+          .panel-title A Coda Global Initiative
+        .panel-body links | links | links
+        .panel-footer copyright &copy; LearnHub 2016
   #scripts
     %script{'src'=>'./public/scripts/app.min.js'}
     %script{'src'=>'./public/scripts/jquery-2.1.4.min.js'}
