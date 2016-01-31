@@ -31,8 +31,7 @@
 
   var generateView = function(items){
     var courseContainer$ = $('.course-container');
-    var courseGenerator = function(item){
-      var course$ = $('<div class="row course"></div>');
+    var generateLeftContainer = function(item){
       var leftContainer$ = $('<div class="col-md-3"><div class="container-fluid"></div></div>');
       var imageContainer$ = $('<div class="row image"></div>');
       var ratingAndLinkContainer$ = $('<div class="row"><div class="container-fluid"><div class="row ratingAndLink"></div></div></div>');
@@ -46,8 +45,9 @@
       extLink$.appendTo(ratingAndLinkContainer$);
       imageContainer$.appendTo(leftContainer$);
       ratingAndLinkContainer$.appendTo(leftContainer$);
-      leftContainer$.appendTo(course$);
-
+      return leftContainer$;
+    },
+    generateCourseDetails = function(item){
       var courseDetailContainer$ = $('<div class="col-md-7 course-details"><div class="container-fluid"></div></div>');
       var courseTitle$ = $('<div class="row"><div class="title"></div></div>');
       var courseDetail$ = $('<div class="row"><div class="detail"></div></div>');
@@ -55,7 +55,12 @@
       courseTitle$.text(item.title);
       courseTitle$.appendTo(courseDetailContainer$);
       courseDetail$.appendTo(courseDetailContainer$);
-      courseDetailContainer$.appendTo(course$);
+      return courseDetailContainer$;
+    }
+    var courseGenerator = function(item){
+      var course$ = $('<div class="row course"></div>');
+      generateLeftContainer(item).appendTo(course$);
+      generateCourseDetails(item).appendTo(course$);
 
       return course$;
     };
