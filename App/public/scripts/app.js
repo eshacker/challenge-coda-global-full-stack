@@ -3,11 +3,28 @@
 
     var jsonURI = "public/data/LearnHub.json", 
       data = null,
-      courseCountTracker$ = $('#course-count .count');
+      courseCountTracker$ = $('#course-count .count'),
+      searchButton$ = $('button#search.btn');
 
     courseCountTracker$.on('course-available', function(e, data){
-      $(this).append(data);
+      $(this).html(data);
     });
+
+/* searching for courses */
+
+    var searchCourses = function(){
+      var criterion = $('#searchCriterion').val();
+      var items = data.items.filter(function(x){
+        return x.title.contains(criterion);
+      });
+      generateView(items);
+    };
+
+    searchButton$.on('click', searchCourses);
+    $('#searchCriterion').on('change input', searchCourses);
+
+/* Note: input in case of #searchCriterion would have become too much, if we were actually sending request to server. */
+/* course search ends */
 
     $.getJSON(jsonURI)
       .done(function (json) {
@@ -38,6 +55,9 @@
 
     var generateView = function(items){
       var courseContainer$ = $('.course-container');
+
+      courseContainer$.html(''); // cleanup first
+
       var generateLeftContainer = function(item){
         var leftContainer$ = $('<div class="col-md-3"><div class="container-fluid"></div></div>');
         var imageContainer$ = $('<div class="row image"></div>');

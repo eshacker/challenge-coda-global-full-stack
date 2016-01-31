@@ -55,9 +55,9 @@
       .container-fluid
         .row
           .input-group.col-md-5
-            %input.form-control{'type'=>'text', :'placeholder'=>'Search for a course.' }/
+            %input.form-control#searchCriterion{'type'=>'text', :'placeholder'=>'Search for a course.' }/
             %span.input-group-btn
-              %button.btn.btn-default{'type'=>'text'} Go!
+              %button.btn.btn-default#search{'type'=>'text'} Go!
         .row
           .container-fluid.course-container
           /we are generating this section via JS
