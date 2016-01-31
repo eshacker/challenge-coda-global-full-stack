@@ -56,7 +56,8 @@
       courseTitle$.appendTo(courseDetailContainer$);
       courseDetail$.appendTo(courseDetailContainer$);
       return courseDetailContainer$;
-    }
+    };
+
     var courseGenerator = function(item){
       var course$ = $('<div class="row course"></div>');
       generateLeftContainer(item).appendTo(course$);
