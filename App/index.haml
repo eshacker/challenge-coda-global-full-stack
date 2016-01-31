@@ -8,6 +8,7 @@
   %link{'rel'=>'stylesheet', :'type'=>'text/css',  :'href'=>'./public/styles/links.min.css'}/
   %link{'rel'=>'stylesheet', :'type'=>'text/css',  :'href'=>'./public/styles/borders.min.css'}/
   %link{'rel'=>'stylesheet', :'type'=>'text/css',  :'href'=>'./public/styles/bootstrap.min.css'}/
+  %link{'rel'=>'stylesheet', :'type'=>'text/css',  :'href'=>'./public/styles/font-awesome.min.css'}/
 
 %body.container-fluid
   %header.row
@@ -25,13 +26,14 @@
                 .panel-heading
                   .panel-title Categories
                 .panel-body.category-checks
-                  %input{'type'=>'checkbox'} iOS
-                  %br
-                  %input{'type'=>'checkbox'} Android
-                  %br
-                  %input{'type'=>'checkbox'} Web Development
-                  %br
-                  %input{'type'=>'checkbox'} Software Development
+                  %form#category-form
+                    %input{'type'=>'checkbox'} iOS
+                    %br
+                    %input{'type'=>'checkbox'} Android
+                    %br
+                    %input{'type'=>'checkbox'} Web Development
+                    %br
+                    %input{'type'=>'checkbox'} Software Development
         .row
           .container-fluid
             .row

@@ -47,6 +47,15 @@
       searchCourses();
     });
 
+/* sorting ends */
+
+/* checkbox */
+
+    $('form#category-form').on('change', ':checkbox', function(){ 
+      
+    });
+
+
 /* searching for courses */
 
     var searchCourses = function(){
@@ -103,7 +112,16 @@
         var extLink$ = $('<div class="col-md-6 extLink"></div>');
         var image$ = $('<img src="'+item.image+'"/>');
         image$.appendTo(imageContainer$);
-        rating$.text(item.rating);
+        for(var i = 0; i < 5; i++){
+          if(i < Math.floor(item.rating)){
+            rating$.append('<i class="fa fa-star"></i>');
+          } else if(i === Math.floor(item.rating) && item.rating*2 %2 === 1){
+            rating$.append('<i class="fa fa-star-half-o"></i>');            
+          } else {
+            rating$.append('<i class="fa fa-star-o"></i>');
+          }
+        }
+        rating$.data('rating', item.rating);
         rating$.appendTo(ratingAndLinkContainer$);
         extLink$.html('<a href="'+item.extLink+'">Link</a>');
         extLink$.appendTo(ratingAndLinkContainer$);
