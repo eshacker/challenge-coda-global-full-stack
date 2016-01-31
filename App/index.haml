@@ -15,7 +15,7 @@
       .navbar-header
         .navbar-brand LearnHub - One stop learning portal!
 
-  %section.row
+  %section#content-container.row
     #sidebar-col.col-md-3
       .container-fluid
         .row
@@ -32,7 +32,6 @@
                   %input{'type'=>'checkbox'} Web Development
                   %br
                   %input{'type'=>'checkbox'} Software Development
-                    
         .row
           .container-fluid
             .row
@@ -43,7 +42,15 @@
                   .btn-group{'role'=>'group'}
                     %button.btn.btn-default{'type'=>'button'} Price
                     %button.btn.btn-default{'type'=>'button'} Ratings
-      
+        .row
+          .container-fluid
+            .row
+              .panel.panel-default
+                .panel-heading
+                  #course-count.panel-title 
+                    %span.count
+                    Courses available
+
     #data-col.col-md-9
       .container-fluid
         .row
