@@ -18,9 +18,10 @@
 
     sortRating$.on('click', function(){
       var items = data.items.sort(function(a, b){
-        return a.rating - b.rating;
+        return b.rating - a.rating;
       });
       generateView(items);
+      searchCourses();
     });
 
     sortCost$.on('click', function(){
@@ -43,14 +44,15 @@
         return aCost - bCost;
       });
       generateView(items);
+      searchCourses();
     });
 
 /* searching for courses */
 
     var searchCourses = function(){
-      var criterion = $('#searchCriterion').val();
+      var criterion = $('#searchCriterion').val().toLowerCase();
       var items = data.items.filter(function(x){
-        return x.title.contains(criterion);
+        return x.title.toLowerCase().contains(criterion);
       });
       generateView(items);
     };
