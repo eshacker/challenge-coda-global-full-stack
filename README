@@ -1,4 +1,4 @@
-web-dev / basic-bootstrap
+Forked from eshacker/basic-bootstrap
 ---
 
 This is very basic place to start hand made application building. `npm install` it and `grunt` - it just works.
