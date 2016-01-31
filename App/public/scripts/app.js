@@ -56,13 +56,23 @@
       courseTitle$.appendTo(courseDetailContainer$);
       courseDetail$.appendTo(courseDetailContainer$);
       return courseDetailContainer$;
+    },
+    generateRightContainer = function(item){
+      var rightContainer$ = $('<div class="col-md-2"><div class="container-fluid"></div></div>');
+      var expertiseLevel$ = $('<div class="row expertise-level"></div>');
+      expertiseLevel$.text(item.level);
+      var cost$ = $('<div class="row cost"></div>');
+      cost$.text(item.cost);
+      expertiseLevel$.appendTo(rightContainer$);
+      cost$.appendTo(rightContainer$);
+      return rightContainer$;
     };
 
     var courseGenerator = function(item){
       var course$ = $('<div class="row course"></div>');
       generateLeftContainer(item).appendTo(course$);
       generateCourseDetails(item).appendTo(course$);
-
+      generateRightContainer(item).appendTo(course$);
       return course$;
     };
     
