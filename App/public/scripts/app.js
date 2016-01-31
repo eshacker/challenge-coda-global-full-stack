@@ -15,7 +15,7 @@
         data.items[i].image = data.images[x];
         data.items[i].category = data.categories[x];
         data.items[i].level = data.levels[x];
-        data.items[i].details = data.details[x];
+        data.items[i].detail = data.details[x];
         data.items[i].cost = data.costs[x];
         data.items[i].extLink = data.extLinks[x];
         i++;
@@ -38,19 +38,30 @@
       var ratingAndLinkContainer$ = $('<div class="row"><div class="container-fluid"><div class="row ratingAndLink"></div></div></div>');
       var rating$ = $('<div class="col-md-6 rating"></div>');
       var extLink$ = $('<div class="col-md-6 extLink"></div>');
+      var image$ = $('<img src="'+item.image+'"/>');
+      image$.appendTo(imageContainer$);
       rating$.text(item.rating);
       rating$.appendTo(ratingAndLinkContainer$);
       extLink$.html('<a href="'+item.extLink+'">Link</a>');
       extLink$.appendTo(ratingAndLinkContainer$);
       imageContainer$.appendTo(leftContainer$);
       ratingAndLinkContainer$.appendTo(leftContainer$);
-      leftContainer$.appendTo(course$);      
+      leftContainer$.appendTo(course$);
+
+      var courseDetailContainer$ = $('<div class="col-md-7 course-details"><div class="container-fluid"></div></div>');
+      var courseTitle$ = $('<div class="row"><div class="title"></div></div>');
+      var courseDetail$ = $('<div class="row"><div class="detail"></div></div>');
+      courseDetail$.text(item.detail);
+      courseTitle$.text(item.title);
+      courseTitle$.appendTo(courseDetailContainer$);
+      courseDetail$.appendTo(courseDetailContainer$);
+      courseDetailContainer$.appendTo(course$);
+
       return course$;
     };
     
     for(var i = 0, len = items.length; i < len; i++){
-      var c$ = courseGenerator(items[i]);
-      c$.appendTo(courseContainer$);
+      courseGenerator(items[i]).appendTo(courseContainer$);
     }
   }
 })(jQuery);
