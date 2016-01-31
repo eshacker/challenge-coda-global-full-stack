@@ -51,13 +51,26 @@
 
 /* checkbox */
 
-    $('form#category-form').on('change', ':checkbox', function(){ 
-      var checked$ = $('form#category-form :checked');
+    $('form#category-form').on('click', ':checkbox', function(){ 
+      var checked$ = $('form#category-form :checkbox');
       var values = [];
+      var allOff = true;
       checked$.each(function(i, e){
-        console.log(i, checked$[i], e);
-        //values.append(checked$[i].attr('value'));
+        if($(checked$[i]).is(':checked')){
+          allOff = false;
+          values.push($(checked$[i]).val());
+        }
       });
+      var items = [];
+      data.items.forEach(function(item){
+        values.forEach(function(x){
+          if(item.category.toLowerCase().contains(x.toLowerCase())){
+            items.push(item);
+          }
+        });
+      });
+      items = allOff ? data.items : items;
+      generateView(items);
     });
 
 
