@@ -1,6 +1,12 @@
 (function($){ // auto executed
   $(function(){ // when jQuery is available
 
+/* I could have fetched data everytime a category, search or sort was required.
+ * but, instead I have taken low road of putting a global `data` variable out.
+ * Whenever code is accessing data to fetch data.items, think it is making a
+ * request to database via ajax. 
+ */
+
     var jsonURI = "public/data/LearnHub.json", 
       data = null,
       courseCountTracker$ = $('#course-count .count'),
@@ -51,7 +57,7 @@
 
 /* checkbox */
 
-    $('form#category-form').on('click', ':checkbox', function(){ 
+    var getCurrentItems = function(){
       var checked$ = $('form#category-form :checkbox');
       var values = [];
       var allOff = true;
@@ -70,6 +76,10 @@
         });
       });
       items = allOff ? data.items : items;
+      return items;
+    }
+    $('form#category-form').on('click', ':checkbox', function(){ 
+      var items = getCurrentItems();
       generateView(items);
     });
 
