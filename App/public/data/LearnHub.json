@@ -56,7 +56,7 @@
       "12": "Rs.8,500.00 INR /month",
       "13": "Rs.9,500.00 INR /month"
     },
-    "level": {
+    "levels": {
       "2": "Intermediate",
       "3": "beginner",
       "4": "beginner",
@@ -70,7 +70,7 @@
       "12": "Intermediate",
       "13": "Advanced"
     },
-    "category": {
+    "categories": {
       "2": "Web Development",
       "3": "Web Development",
       "4": "Web Development",

@@ -69,7 +69,6 @@ module.exports = function(grunt) {
         }]
       }
     }
-
   });
 
   
@@ -79,8 +78,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-haml');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-serve');
 
 
   grunt.registerTask('default', ['clean:dist', 'uglify', 'sass:self', 'haml', 'copy:fonts', 'copy:images', 'copy:data', 'cssmin']);
+
 /* sass:self gotta come before cssmin */
 };
