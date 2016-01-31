@@ -4,10 +4,45 @@
     var jsonURI = "public/data/LearnHub.json", 
       data = null,
       courseCountTracker$ = $('#course-count .count'),
-      searchButton$ = $('button#search.btn');
+      searchButton$ = $('button#search.btn'),
+      courseContainer$ = $('.course-container');
 
     courseCountTracker$.on('course-available', function(e, data){
       $(this).html(data);
+    });
+
+/* Sorting */
+
+    var sortRating$ = $('#sort-by-ratings'),
+      sortCost$ = $('#sort-by-cost');
+
+    sortRating$.on('click', function(){
+      var items = data.items.sort(function(a, b){
+        return a.rating - b.rating;
+      });
+      generateView(items);
+    });
+
+    sortCost$.on('click', function(){
+      var items = data.items.sort(function(a, b){
+        var aCost = a.cost,
+          bCost = b.cost;
+
+        if(aCost == 0){
+          aCost = 0;
+        } else {
+          aCost = aCost.replace(/^\D+|\D+$/g, "").split('.')[0].split(',');
+          aCost = parseInt(aCost[0] + aCost[1]);
+        }
+        if(bCost == 0){
+          bCost = 0;
+        } else {
+          bCost = bCost.replace(/^\D+|\D+$/g, "").split('.')[0].split(',');  
+          bCost = parseInt(bCost[0] + bCost[1]);
+        }
+        return aCost - bCost;
+      });
+      generateView(items);
     });
 
 /* searching for courses */
@@ -54,7 +89,7 @@
       });
 
     var generateView = function(items){
-      var courseContainer$ = $('.course-container');
+     
 
       courseContainer$.html(''); // cleanup first
 
@@ -96,7 +131,7 @@
       };
 
       var courseGenerator = function(item){
-        var course$ = $('<div class="row course"></div>');
+        var course$ = $('<div class="row course" id="'+item.id+'"></div>');
         generateLeftContainer(item).appendTo(course$);
         generateCourseDetails(item).appendTo(course$);
         generateRightContainer(item).appendTo(course$);
