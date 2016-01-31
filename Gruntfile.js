@@ -52,7 +52,10 @@ module.exports = function(grunt) {
       },
       images: {
         files: [{expand: true, cwd: 'App/public/images', src: ['*'], dest: 'Dist/public/images/'}]
-      }
+      },
+      data: {
+        files: [{expand: true, cwd: 'App/public/data', src:['*'], dest: 'Dist/public/data/'}]
+      },
     },
 
     cssmin: {
@@ -78,6 +81,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
 
 
-  grunt.registerTask('default', ['clean:dist', 'uglify', 'sass:self', 'haml', 'copy:fonts', 'copy:images', 'cssmin']);
+  grunt.registerTask('default', ['clean:dist', 'uglify', 'sass:self', 'haml', 'copy:fonts', 'copy:images', 'copy:data', 'cssmin']);
 /* sass:self gotta come before cssmin */
 };
