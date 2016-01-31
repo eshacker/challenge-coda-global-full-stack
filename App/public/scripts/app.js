@@ -52,7 +52,12 @@
 /* checkbox */
 
     $('form#category-form').on('change', ':checkbox', function(){ 
-      
+      var checked$ = $('form#category-form :checked');
+      var values = [];
+      checked$.each(function(i, e){
+        console.log(i, checked$[i], e);
+        //values.append(checked$[i].attr('value'));
+      });
     });
 
 
@@ -123,7 +128,7 @@
         }
         rating$.data('rating', item.rating);
         rating$.appendTo(ratingAndLinkContainer$);
-        extLink$.html('<a href="'+item.extLink+'">Link</a>');
+        extLink$.html('<a href="'+item.extLink+'" title="'+item.extLink+'">Link <i class="fa fa-external-link"></i></a>');
         extLink$.appendTo(ratingAndLinkContainer$);
         imageContainer$.appendTo(leftContainer$);
         ratingAndLinkContainer$.appendTo(leftContainer$);
@@ -131,8 +136,8 @@
       },
       generateCourseDetails = function(item){
         var courseDetailContainer$ = $('<div class="col-md-7 course-details"><div class="container-fluid"></div></div>');
-        var courseTitle$ = $('<div class="row"><div class="title"></div></div>');
-        var courseDetail$ = $('<div class="row"><div class="detail"></div></div>');
+        var courseTitle$ = $('<div class="row course-title"><div class="title"></div></div>');
+        var courseDetail$ = $('<div class="row course-detail"><div class="detail"></div></div>');
         courseDetail$.text(item.detail);
         courseTitle$.text(item.title);
         courseTitle$.appendTo(courseDetailContainer$);
@@ -141,10 +146,10 @@
       },
       generateRightContainer = function(item){
         var rightContainer$ = $('<div class="col-md-2"><div class="container-fluid"></div></div>');
-        var expertiseLevel$ = $('<div class="row expertise-level"></div>');
+        var expertiseLevel$ = $('<div class="row expertise-level ribbon"></div>');
         expertiseLevel$.text(item.level);
         var cost$ = $('<div class="row cost"></div>');
-        cost$.text(item.cost);
+        if(item.cost == 0){ cost$.text("Free"); } else { cost$.text(item.cost); }
         expertiseLevel$.appendTo(rightContainer$);
         cost$.appendTo(rightContainer$);
         return rightContainer$;

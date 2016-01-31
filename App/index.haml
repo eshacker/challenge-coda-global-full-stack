@@ -5,8 +5,6 @@
   <meta name='viewport' content='width=device-width, initial-scale=1' />
   %title
   %link{'rel'=>'stylesheet', :'type'=>'text/css',  :'href'=>'./public/styles/app.min.css'}/
-  %link{'rel'=>'stylesheet', :'type'=>'text/css',  :'href'=>'./public/styles/links.min.css'}/
-  %link{'rel'=>'stylesheet', :'type'=>'text/css',  :'href'=>'./public/styles/borders.min.css'}/
   %link{'rel'=>'stylesheet', :'type'=>'text/css',  :'href'=>'./public/styles/bootstrap.min.css'}/
   %link{'rel'=>'stylesheet', :'type'=>'text/css',  :'href'=>'./public/styles/font-awesome.min.css'}/
 
@@ -27,13 +25,13 @@
                   .panel-title Categories
                 .panel-body.category-checks
                   %form#category-form
-                    %input{'type'=>'checkbox'} iOS
+                    %input{'type'=>'checkbox', :'value'=>'iOS'} iOS
                     %br
-                    %input{'type'=>'checkbox'} Android
+                    %input{'type'=>'checkbox', :'value'=>'Android'} Android
                     %br
-                    %input{'type'=>'checkbox'} Web Development
+                    %input{'type'=>'checkbox', :'value'=>'Web Development'} Web Development
                     %br
-                    %input{'type'=>'checkbox'} Software Development
+                    %input{'type'=>'checkbox', :'value'=>'Software Development'} Software Development
         .row
           .container-fluid
             .row
