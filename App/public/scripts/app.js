@@ -17,21 +17,54 @@
       $(this).html(data);
     });
 
+/* checkbox */
+
+    var itemsInSelectedCategories = function(){
+      var checked$ = $('form#category-form :checkbox');
+      var values = [];
+      var allUnchecked = true;
+      checked$.each(function(i, e){
+        if($(checked$[i]).is(':checked')){
+          allUnchecked = false;
+          values.push($(checked$[i]).val());
+        }
+      });
+      var items = [];
+      data.items.forEach(function(item){
+        values.forEach(function(x){
+          if(item.category.toLowerCase().contains(x.toLowerCase())){
+            items.push(item);
+          }
+        });
+      });
+      items = allUnchecked ? data.items : items;
+      console.log(items.length);
+      return items;
+    };
+
+    $('form#category-form').on('click', ':checkbox', function(){ 
+      generateView(itemsInSelectedCategories());
+    });
+
+/* category code ends */
+
 /* Sorting */
+/* Sorting is dependent upon categories selected */
 
     var sortRating$ = $('#sort-by-ratings'),
       sortCost$ = $('#sort-by-cost');
 
     sortRating$.on('click', function(){
-      var items = data.items.sort(function(a, b){
+      var items = itemsInSearch();
+      var nitems = items.sort(function(a, b){
         return b.rating - a.rating;
       });
-      generateView(items);
-      searchCourses();
+      generateView(nitems);
     });
 
     sortCost$.on('click', function(){
-      var items = data.items.sort(function(a, b){
+      var items = itemsInSearch();
+      var nitems = items.sort(function(a, b){
         var aCost = a.cost,
           bCost = b.cost;
 
@@ -49,49 +82,23 @@
         }
         return aCost - bCost;
       });
-      generateView(items);
-      searchCourses();
+      generateView(nitems);
     });
 
 /* sorting ends */
 
-/* checkbox */
-
-    var itemsInSelectedCategoris = function(){
-      var checked$ = $('form#category-form :checkbox');
-      var values = [];
-      var allOff = true;
-      checked$.each(function(i, e){
-        if($(checked$[i]).is(':checked')){
-          allOff = false;
-          values.push($(checked$[i]).val());
-        }
-      });
-      var items = [];
-      data.items.forEach(function(item){
-        values.forEach(function(x){
-          if(item.category.toLowerCase().contains(x.toLowerCase())){
-            items.push(item);
-          }
-        });
-      });
-      items = allOff ? data.items : items;
-      return items;
-    }
-    $('form#category-form').on('click', ':checkbox', function(){ 
-      var items = itemsInSelectedCategoris();
-      generateView(items);
-    });
-
-
 /* searching for courses */
-
-    var searchCourses = function(){
-      var criterion = $('#searchCriterion').val().toLowerCase();
-      var items = data.items.filter(function(x){
-        return x.title.toLowerCase().contains(criterion);
-      });
-      generateView(items);
+/* Search is dependent upon categories selected */
+    var itemsInSearch = function(){
+       var criterion = $('#searchCriterion').val().toLowerCase();
+       var items = itemsInSelectedCategories();
+       items = items.filter(function(x){
+         return x.title.toLowerCase().contains(criterion);
+       });
+      return items;
+    },
+    searchCourses = function(){
+      generateView(itemsInSearch());
     };
 
     searchButton$.on('click', searchCourses);
@@ -128,8 +135,6 @@
       });
 
     var generateView = function(items){
-     
-
       courseContainer$.html(''); // cleanup first
 
       var generateLeftContainer = function(item){
