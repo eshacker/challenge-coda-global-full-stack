@@ -57,7 +57,7 @@
 
 /* checkbox */
 
-    var getCurrentItems = function(){
+    var itemsInSelectedCategoris = function(){
       var checked$ = $('form#category-form :checkbox');
       var values = [];
       var allOff = true;
@@ -79,7 +79,7 @@
       return items;
     }
     $('form#category-form').on('click', ':checkbox', function(){ 
-      var items = getCurrentItems();
+      var items = itemsInSelectedCategoris();
       generateView(items);
     });
 
