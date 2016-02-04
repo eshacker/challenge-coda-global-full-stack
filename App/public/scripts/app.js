@@ -1,4 +1,4 @@
-(function($){ // auto executed
+var LearnHub = LearnHub || (function($){ // auto executed
   $(function(){ // when jQuery is available
 
 /* I could have fetched data everytime a category, search or sort was required.
